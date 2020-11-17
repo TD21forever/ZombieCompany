@@ -18,7 +18,7 @@ scheduler.start()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'you-will-never-guess!'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Mouyu0407@localhost:3306/zombie_company?charset=UTF8MB4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost:3306/zombie_company?charset=UTF8MB4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 cors = CORS(app, supports_credentials=True)

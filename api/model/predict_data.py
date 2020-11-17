@@ -1,12 +1,13 @@
 #coding:utf-8
 import pandas as pd
 import numpy as np
-from .merge_data import merge_data
+from model.merge_data import merge_data
 from sklearn.externals import joblib
 import xgboost as xgb
 import datetime
+import os
 def predict_(base_root,money_report_root,year_report_root,paient_information_root):
-    finally_data = merge_data.merge_data(base_root,money_report_root,year_report_root,paient_information_root)
+    finally_data = merge_data(base_root,money_report_root,year_report_root,paient_information_root)
     target = finally_data['flag']
     features = finally_data.columns.tolist()
 
@@ -156,7 +157,7 @@ def predict_(base_root,money_report_root,year_report_root,paient_information_roo
         else:
             new_df_train['%s' % feature] = df_train[feature]
 
-    clf = joblib.load('verify_catboost.m')
+    clf = joblib.load('model/verify_catboost.m')
     y_pred = clf.predict(new_df_train.values)
 
     sub=finally_data[['ID']]
